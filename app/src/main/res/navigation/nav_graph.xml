@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/categoryFragment">
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.newyorktimes.view.fragments.CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.example.newyorktimes.view.fragments.ArticlesFragment"
+        tools:layout="@layout/fragment_articles">
+        <action
+            android:id="@+id/action_articlesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.newyorktimes.view.fragments.DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="web_url"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+    <!--Global Action -->
+
+    <action
+        android:id="@+id/action_to_categoryFragment"
+        app:destination="@id/categoryFragment"/>
+
+    <action
+        android:id="@+id/action_to_articlesFragment"
+        app:destination="@id/articlesFragment"/>
+
+    <action
+        android:id="@+id/action_to_detailFragment"
+        app:destination="@id/detailFragment"/>
+
+</navigation>
