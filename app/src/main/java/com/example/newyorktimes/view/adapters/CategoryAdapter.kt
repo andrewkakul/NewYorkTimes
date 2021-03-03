@@ -7,15 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newyorktimes.R
 
-class CategoryAdapter(): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
-
-    private lateinit var categoryList: Array<out String>
-    private lateinit var categoryListener: CategoryListener
-
-    constructor(categoryList: Array<out String>, onCategoryListener: CategoryListener ) : this() {
-        this.categoryList = categoryList
-        this.categoryListener = onCategoryListener
-    }
+class CategoryAdapter(private var categoryList: Array<out String>, private var categoryListener: CategoryListener ): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, categoryListener: CategoryListener): RecyclerView.ViewHolder(view), View.OnClickListener{
         private var onCategoryTouched: CategoryListener

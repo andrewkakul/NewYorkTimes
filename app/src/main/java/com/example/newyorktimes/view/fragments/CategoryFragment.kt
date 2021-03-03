@@ -56,24 +56,7 @@ class CategoryFragment : Fragment(), CategoryListener {
     }
 
     override fun onCategoryClicked(position: Int) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            val service = NetworkManager.createService()
-            val data = NetworkManager.createData(categoryAdapter.getCategory(position))
-            val call = service.getArticles(data)
-
-            call.enqueue(object : Callback<ArticlesResponse> {
-                override fun onResponse(
-                    call: Call<ArticlesResponse>,
-                    response: Response<ArticlesResponse>
-                ) {
-                    articlesViewModel.saveData(response.body()!!)
-                    findNavController().navigate(R.id.action_categoryFragment_to_articlesFragment)
-                }
-
-                override fun onFailure(call: Call<ArticlesResponse>, t: Throwable) {
-                    Log.e(TAG, t.toString())
-                }
-            })
-        }
+        articlesViewModel.getData(categoryAdapter.getCategory(position))
+        findNavController().navigate(R.id.action_categoryFragment_to_articlesFragment)
     }
 }

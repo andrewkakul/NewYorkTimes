@@ -8,15 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newyorktimes.R
 import com.example.newyorktimes.model.Article
 
-class ArticlesAdapter(): RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter(private var articleListener: ArticleListener): RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     private  var articleList = ArrayList<Article>()
-    private lateinit var articleListener: ArticleListener
-
-    constructor(articleListener: ArticleListener): this() {
-        this.articleListener = articleListener
-
-    }
 
     class ViewHolder(view: View, articleListener: ArticleListener): RecyclerView.ViewHolder(view), View.OnClickListener{
         private var onArticleTouched: ArticleListener
